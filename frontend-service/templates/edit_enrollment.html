@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h3>Edit Enrollment</h3>
+        <form action="/enrollments/edit/{{ enrollment.id }}" method="POST">
+            <div class="mb-3">
+                <label for="student_id" class="form-label">Student</label>
+                <select class="form-select" id="student_id" name="student_id" required>
+                    {% for student in students %}
+                    <option value="{{ student.id }}" {% if student.id == enrollment.student_id %}selected{% endif %}>
+                        {{ student.name }} ({{ student.email }})
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="course_id" class="form-label">Course</label>
+                <select class="form-select" id="course_id" name="course_id" required>
+                    {% for course in courses %}
+                    <option value="{{ course.id }}" {% if course.id == enrollment.course_id %}selected{% endif %}>
+                        {{ course.title }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-info">Update Enrollment</button>
+            <a href="/enrollments" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

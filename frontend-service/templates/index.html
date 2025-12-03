@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block content %}
+<div class="jumbotron text-center mt-5">
+  <h1 class="display-4">Welcome to EduTrack</h1>
+  <p class="lead">A Microservices Demo Application</p>
+  <hr class="my-4" />
+  <p>Manage Students, Courses, and Enrollments across distributed services.</p>
+  <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+    <a class="btn btn-primary btn-lg" href="/students" role="button"
+      >Manage Students</a
+    >
+    <a class="btn btn-success btn-lg" href="/courses" role="button"
+      >Manage Courses</a
+    >
+    <a class="btn btn-info btn-lg" href="/enrollments" role="button"
+      >Manage Enrollments</a
+    >
+  </div>
+</div>
+{% endblock %}

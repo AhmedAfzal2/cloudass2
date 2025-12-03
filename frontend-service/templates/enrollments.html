@@ -1,0 +1,69 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row">
+  <div class="col-md-4">
+    <h3>Enroll Student</h3>
+    <form action="/enrollments/add" method="POST">
+      <div class="mb-3">
+        <label for="student_id" class="form-label">Student</label>
+        <select class="form-select" id="student_id" name="student_id" required>
+          <option value="" selected disabled>Select Student</option>
+          {% for student in students %}
+          <option value="{{ student.id }}">
+            {{ student.name }} ({{ student.email }})
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="course_id" class="form-label">Course</label>
+        <select class="form-select" id="course_id" name="course_id" required>
+          <option value="" selected disabled>Select Course</option>
+          {% for course in courses %}
+          <option value="{{ course.id }}">{{ course.title }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <button type="submit" class="btn btn-info">Enroll</button>
+    </form>
+  </div>
+  <div class="col-md-8">
+    <h3>Enrollments List</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Student</th>
+          <th>Course</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for enrollment in enrollments %}
+        <tr>
+          <td>{{ enrollment.id }}</td>
+          <td>{{ enrollment.student_name }}</td>
+          <td>{{ enrollment.course_name }}</td>
+          <td>
+            <a
+              href="/enrollments/edit/{{ enrollment.id }}"
+              class="btn btn-warning btn-sm"
+              >Edit</a
+            >
+            <a
+              href="/enrollments/delete/{{ enrollment.id }}"
+              class="btn btn-danger btn-sm"
+              onclick="return confirm('Are you sure?')"
+              >Delete</a
+            >
+          </td>
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="4" class="text-center">No enrollments found.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
