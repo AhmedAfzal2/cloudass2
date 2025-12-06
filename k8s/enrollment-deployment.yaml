@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: enrollment-service
-          image: REPLACE_WITH_ARTIFACT_REGISTRY/enrollment-service:latest
+          image: us-central1-docker.pkg.dev/cloud-assignment-2-ahmedafzal/container-assignment-repo/enrollment:latest
           ports:
             - containerPort: 8080
           env:

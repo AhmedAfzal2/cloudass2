@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: student-service
-          image: REPLACE_WITH_ARTIFACT_REGISTRY/student-service:latest
+          image: us-central1-docker.pkg.dev/cloud-assignment-2-ahmedafzal/container-assignment-repo/student:latest
           ports:
             - containerPort: 8080
           env:
